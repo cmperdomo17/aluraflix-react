@@ -11,6 +11,7 @@ body {
 }
 
 .button-alura {
+  border: 2px solid #2b7cdf;
   transition: box-shadow 0.5s;
 }
 
@@ -18,13 +19,17 @@ body {
   transition: filter 0.5s;
 }
 
+.footer-shadow {
+  box-shadow: 0 -0.5rem 1rem #257be595;
+}
+
 .button-alura:hover {
-  box-shadow: 0 0 1rem #96d2fa83;
+  box-shadow: 0 0 1rem #2b7cdf95;
   transition: box-shadow 0.5s;
 }
 
 .alura-logo:hover {
-  filter: drop-shadow(0 0 0.5rem #96d2fa83);
+  filter: drop-shadow(0 0 0.5rem #257be595);
   transition: filter 0.5s;
 }
 
@@ -40,7 +45,7 @@ body {
   display: block;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .hide-on-mobile {
     display: none;
   }
@@ -55,5 +60,13 @@ body {
 
   .button-text.inactive {
     display: none;
+  }
+
+  .button-alura.active {
+    border: 2px solid #2b7cdf;
+  }
+
+  .button-alura.inactive {
+    border: none;
   }
 }
