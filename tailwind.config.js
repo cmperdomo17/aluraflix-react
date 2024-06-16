@@ -12,7 +12,11 @@ export default {
         tertiary: '#2254ab',
         light: '#eff8ff',
         dark: '#18181b',
-      }
+      },
+      fontFamily: {
+        'Onest': ['Onest', 'sans-serif'],
+        'Outfit': ['Outfit', 'sans-serif'],
+      },
     },
   },
   plugins: [],

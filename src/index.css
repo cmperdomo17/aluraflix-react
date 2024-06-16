@@ -2,6 +2,27 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Outfit:wght@100..900&display=swap');
+
 :root {
   color-scheme: dark light;
+}
+
+.button-alura {
+  transition: box-shadow 0.5s;
+}
+
+.alura-logo {
+  transition: filter 0.5s;
+}
+
+.button-alura:hover {
+  box-shadow: 0 0 1rem #96d2fa83;
+  transition: box-shadow 0.5s;
+}
+
+.alura-logo:hover {
+  filter: drop-shadow(0 0 0.5rem #96d2fa83);
+  transition: filter 0.5s;
 }
