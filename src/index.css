@@ -2,11 +2,12 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Outfit:wght@100..900&display=swap');
-
 :root {
   color-scheme: dark light;
+}
+
+body {
+  animation: fadeIn 1.2s;
 }
 
 .button-alura {
@@ -25,4 +26,34 @@
 .alura-logo:hover {
   filter: drop-shadow(0 0 0.5rem #96d2fa83);
   transition: filter 0.5s;
+}
+
+.buttons-svg-mobile svg {
+  display: none;
+}
+
+.button-text.active {
+  display: block;
+}
+
+.button-text.active {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .buttons-svg-mobile svg{
+    display: block;
+  }
+
+  .button-text.active {
+    display: block;
+  }
+
+  .button-text.inactive {
+    display: none;
+  }
 }
