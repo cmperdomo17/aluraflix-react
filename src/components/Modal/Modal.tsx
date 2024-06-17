@@ -21,7 +21,7 @@ function Modal({ title, children, show, onClose, bgColor, borderColor }: ModalPr
             <div className="border-1 w-96 lg:w-1/3 min-h-100 p-5 rounded-lg shadow-2xl shadow-gray-500" 
                 style={{backgroundColor: bgColor, borderColor: borderColor}}>
                 <div className="flex justify-between px-2 pb-12 gap-36">
-                    <h1 className="text-white text-center text-2xl lg:text-3xl font-bold font-Onest">
+                    <h1 className="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold font-Onest">
                         {title}
                     </h1>
                     <CloseButton onClick={onClose} color="#fff" />
