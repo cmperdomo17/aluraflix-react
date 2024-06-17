@@ -45,6 +45,18 @@ body {
   display: block;
 }
 
+.card-img {
+  width: 500px;
+  height: 280px;
+  border-radius: 1rem;
+  transition: box-shadow 0.5s;
+}
+
+.card-img:hover {
+  box-shadow: 0 -0.5rem 3rem #59a4ff95;
+  transition: box-shadow 0.5s;
+}
+
 @media screen and (max-width: 767px) {
   .hide-on-mobile {
     display: none;
@@ -68,5 +80,10 @@ body {
 
   .button-alura.inactive {
     border: none;
+  }
+
+  .card-img {
+    width: 270px;
+    height: 140px;
   }
 }

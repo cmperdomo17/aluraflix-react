@@ -1,14 +1,10 @@
-import Footer from "./layouts/Footer/Footer"
-import NavBar from "./layouts/NavBar/NavBar"
-import Header from "./layouts/Header/Header"
+import MainLayout from "./layouts/MainLayout/MainLayout"
 
 function App() {
 
   return (
     <>
-      <NavBar />
-      <Header />
-      <Footer />
+      <MainLayout />
     </>
   )
 }
