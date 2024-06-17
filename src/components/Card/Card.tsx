@@ -18,7 +18,7 @@ function Card({ image, width, height, color, modify, videoUrl }: CardProps) {
 
     return (
         <div className="flex flex-col gap-6">
-            <a href={image} target="_blank" rel="noopener noreferrer" onClick={handleClickVideo}>
+            <a href={videoUrl} target="_blank" rel="noopener noreferrer" onClick={handleClickVideo}>
                 <img className="card-img cursor-pointer border-4"
                     src={image}
                     alt="Card"
