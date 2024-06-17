@@ -51,7 +51,7 @@ body {
 }
 
 .card-img:hover {
-  transform: scale(1.07);
+  transform: scale(1.05);
 }
 
 .hide-header-mobile {
