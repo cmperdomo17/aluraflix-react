@@ -4,7 +4,7 @@ interface BannerProps {
 
 function Banner(props: BannerProps) {
     return (
-        <section className="relative">
+        <section className="relative border-b-4 border-primary">
             <img className="w-full h-full object-cover opacity-50" src="/public/banner.jpeg" alt="banner" />
             <div className="absolute inset-0 flex items-center justify-center w-full z-0">
                 {props.children}

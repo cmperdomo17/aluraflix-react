@@ -23,6 +23,10 @@ body {
   box-shadow: 0 -0.5rem 1rem #257be595;
 }
 
+.navbar-shadow {
+  box-shadow: 0 0.5rem 1rem #257be595;
+}
+
 .button-alura:hover {
   box-shadow: 0 0 1rem #2b7cdf95;
   transition: box-shadow 0.5s;
@@ -46,14 +50,7 @@ body {
 }
 
 .card-img {
-  width: 500px;
-  height: 280px;
   border-radius: 1rem;
-  transition: box-shadow 0.5s;
-}
-
-.card-img:hover {
-  box-shadow: 0 -0.5rem 3rem #59a4ff95;
   transition: box-shadow 0.5s;
 }
 
@@ -86,4 +83,17 @@ body {
     width: 270px;
     height: 140px;
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3484ec;
+  border-radius: 50px;
 }

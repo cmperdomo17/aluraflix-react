@@ -13,7 +13,7 @@ function NavBar() {
     }
 
     return (
-        <nav className="bg-dark p-4 flex justify-center md:justify-between">
+        <nav className="bg-dark p-4 flex navbar-shadow border-b-4 border-tertiary justify-center md:justify-between">
             <div className="hide-on-mobile">
                 <Logo />
             </div>
