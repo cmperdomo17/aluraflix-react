@@ -2,7 +2,7 @@ interface ButtonProps {
     svg: JSX.Element;
     text: string;
     isActive: boolean;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 function Button({ svg, text, isActive, onClick }: ButtonProps) {

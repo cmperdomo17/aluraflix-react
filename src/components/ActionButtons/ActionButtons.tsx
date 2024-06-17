@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Modal from "../Modal/Modal";
+import Form from "../Form/Form";
 
 interface ActionButtonsProps {
     borderColor: string;
@@ -25,10 +26,15 @@ function ActionButtons({ borderColor }: ActionButtonsProps) {
                 </div>
             </div>
             {showModal && <Modal show={showModal} children={
-                <h1 className="text-dark text-3xl font-bold">
-                    Edit Card
-                </h1>
+                <div>
+                    <h1 className="text-white text-3xl font-bold font-Onest">
+                        Editar Card
+                    </h1>
+                    <Form />
+                </div>
             } onClose={toggleModal}
+            bgColor="#03122f"
+            borderColor="#96d2fa"
             />}
         </>
 

@@ -6,7 +6,7 @@ function Header() {
     return (
         <header className="hide-header-mobile">
             <Banner>
-                <div className="mt-52 md:mt-0 flex flex-col md:flex-row items-center justify-center mx-10 gap-6 md:gap-56">
+                <div className="mt-52 md:mt-0 flex flex-col md:flex-row items-center justify-center mx-10 gap-6 md:gap-56 z-0">
                     <section className="w-full md:w-1/2">
                         <div className="flex flex-col gap-3 md:gap-10">
                             <TitleCategory title="FRONTEND" bgColor="#409bf1"/>
