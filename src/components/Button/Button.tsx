@@ -9,19 +9,17 @@ function Button({ svg, text, isActive, onClick }: ButtonProps) {
 
     const activeStyle = {
         backgroundColor: "#297ae5",
-        color: "#eff8ff",
-        borderColor: "#eff8ff"
+        color: "#eff8ff"
     };
 
     const defaultStyles = {
         backgroundColor: "transparent",
-        color: "inherit",
-        borderColor: "inherit",
+        color: "inherit"
     };
 
     return (
         <button style={isActive ? activeStyle : defaultStyles}
-                className={`button-alura ${isActive ? "active" : "inactive"} flex justify-center items-center gap-2 text-gray-300 border-gray-300 hover:border-white hover:text-white px-3 md:px-6 py-1 rounded-lg font-semibold text-sm font-Onest`}
+                className={`button-alura ${isActive ? "active" : "inactive"} flex justify-center items-center gap-2 text-gray-300 border-none md:border-2 md:border-gray-300 md:hover:border-white lg:border-2 lg:border-gray-300 lg:hover:border-white hover:text-white px-3 md:px-6 py-1 rounded-full font-semibold text-sm font-Onest`}
                 onClick={onClick}
         >
             {svg}

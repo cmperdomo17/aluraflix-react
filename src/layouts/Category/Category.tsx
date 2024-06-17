@@ -4,7 +4,7 @@ import TitleCategory from "../../components/TitleCategory/TitleCategory";
 function Category() {
 
     return (
-        <div className="w-full flex flex-col gap-10 pt-8 pb-14 md:pb-24 px-0 lg:px-14">
+        <div className="w-full flex flex-col gap-10 pt-14 lg:pt-8 pb-14 md:pb-24 px-0 lg:px-14">
             <TitleCategory title="FRONTEND" bgColor="#409bf1"/>
             <div className="flex flex-col items-center justify-center lg:flex-row gap-10">
                 <Card image="/img-card-front-1.jpeg"
