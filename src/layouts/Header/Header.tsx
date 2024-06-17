@@ -17,7 +17,11 @@ function Header() {
                         </div>
                     </section>
                     <section className="flex justify-center w-full md:w-1/2 mt-10 md:mt-0">
-                        <Card image="/public/img-card.jpeg" alt="Card" color="#409bf1" width="500px" height="280px"/>
+                        <Card image="/public/img-card.jpeg"
+                            color="#409bf1"
+                            width="500px" height="280px"
+                            modify={false}
+                        />
                     </section>
                 </div>
             </Banner>
