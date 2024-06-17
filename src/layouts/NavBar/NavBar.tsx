@@ -41,16 +41,15 @@ function NavBar() {
                     />
                 </div>
             </nav>
-            {showModal && <Modal show={showModal} children={
+            {showModal && <Modal show={showModal}
+            title="Nuevo Video"
+            children={
                 <div>
-                    <h1 className="text-white text-3xl font-bold font-Onest">
-                        Crear Card
-                    </h1>
                     <Form />
                 </div>
             } onClose={toggleModalVisibility}
-            bgColor="#18181b"
-            borderColor="#fff"
+            bgColor="#232323"
+            borderColor="#fbf8f3"
             />}
         </>
         

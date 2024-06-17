@@ -2,6 +2,7 @@ import React from "react";
 import CloseButton from "../CloseButton/CloseButton";
 
 interface ModalProps {
+    title: string;
     children: React.ReactNode;
     show: boolean;
     onClose: () => void;
@@ -9,7 +10,7 @@ interface ModalProps {
     borderColor?: string;
 }
 
-function Modal({ children, show, onClose, bgColor, borderColor }: ModalProps) {
+function Modal({ title, children, show, onClose, bgColor, borderColor }: ModalProps) {
 
     if (!show) {
         return null;
@@ -17,11 +18,16 @@ function Modal({ children, show, onClose, bgColor, borderColor }: ModalProps) {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-20">
-            <div className="border-4 w-96 lg:w-1/2 min-h-100 p-5 rounded-lg shadow-lg" 
+            <div className="border-1 w-96 lg:w-1/3 min-h-100 p-5 rounded-lg shadow-2xl shadow-gray-500" 
                 style={{backgroundColor: bgColor, borderColor: borderColor}}>
-                <div className="flex items-center justify-between mb-20 pb-2">
-                    {children}
+                <div className="flex justify-between px-2 pb-12 gap-36">
+                    <h1 className="text-white text-center text-2xl lg:text-3xl font-bold font-Onest">
+                        {title}
+                    </h1>
                     <CloseButton onClick={onClose} color="#fff" />
+                </div>
+                <div className="flex justify-center px-2">
+                    {children}
                 </div>
             </div>
         </div>

@@ -25,15 +25,14 @@ function ActionButtons({ borderColor }: ActionButtonsProps) {
                     <button>Eliminar</button>
                 </div>
             </div>
-            {showModal && <Modal show={showModal} children={
+            {showModal && <Modal show={showModal}
+            title="Editar Card"
+            children={
                 <div>
-                    <h1 className="text-white text-3xl font-bold font-Onest">
-                        Editar Card
-                    </h1>
                     <Form />
                 </div>
             } onClose={toggleModal}
-            bgColor="#03122f"
+            bgColor="#192e52"
             borderColor="#96d2fa"
             />}
         </>
