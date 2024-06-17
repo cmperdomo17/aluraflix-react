@@ -6,7 +6,7 @@ interface CardProps {
     height: string;
     color: string;
     modify: boolean;
-    videoUrl: string;
+    videoUrl?: string;
 }
 
 function Card({ image, width, height, color, modify, videoUrl }: CardProps) {
