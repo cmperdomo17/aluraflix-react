@@ -10,8 +10,8 @@ function Header() {
                     <section className="w-full md:w-1/2">
                         <div className="flex flex-col gap-3 md:gap-10">
                             <TitleCategory title="FRONTEND" bgColor="#409bf1"/>
-                            <h1 className="text-2xl md:text-6xl font-bold font-Onest">Challenge React</h1>
-                            <p className="text-xs md:text-lg font-Onest text-justify">
+                            <h1 className="text-4xl lg:text-6xl font-bold font-Onest">Challenge React</h1>
+                            <p className="text-xs md:text-base lg:text-lg font-Onest text-justify">
                                 Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React.
                             </p>
                         </div>
