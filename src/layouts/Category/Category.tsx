@@ -14,7 +14,7 @@ function Category() {
     const [dataCard, setDataCard] = useState<CardData[]>([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/card')
+        fetch('https://fake-api-aluraflix-theta.vercel.app/card')
         .then(response => response.json())
         .then((data: CardData[]) => setDataCard(data))
         .catch(error => console.log("Error: ", error));
