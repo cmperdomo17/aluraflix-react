@@ -11,14 +11,13 @@ interface CardProps {
 
 function Card({ image, width, height, color, modify, videoUrl }: CardProps) {
 
-    const handleClickVideo = (e: any) => {
-        e.preventDefault();
+    const handleClickVideo = () => {
         window.open(videoUrl, '_blank');
     }
 
     return (
         <div className="flex flex-col gap-6">
-            <a href={videoUrl} target="_blank" rel="noopener noreferrer" onClick={handleClickVideo}>
+            <button onClick={handleClickVideo}>
                 <img className="card-img cursor-pointer border-4"
                     src={image}
                     alt="Card"
@@ -28,7 +27,7 @@ function Card({ image, width, height, color, modify, videoUrl }: CardProps) {
                         height: height
                     }}
                 />
-            </a>
+            </button>
             <div className="flex justify-center gap-2">
                 {modify && (
                     <ActionButtons borderColor={color}/>
