@@ -29,7 +29,6 @@ body {
 
 .button-alura:hover {
   box-shadow: 0 0 1.2rem #398df4;
-  transition: box-shadow 0.5s;
 }
 
 .alura-logo:hover {
@@ -39,10 +38,6 @@ body {
 
 .buttons-svg-mobile svg {
   display: none;
-}
-
-.button-text.active {
-  display: block;
 }
 
 .button-text.active {
@@ -86,6 +81,10 @@ body {
   .card-img {
     width: 270px;
     height: 140px;
+  }
+
+  .navbar-shadow {
+    box-shadow: 0 0.5rem 1rem #3b93ff87;
   }
 }
 

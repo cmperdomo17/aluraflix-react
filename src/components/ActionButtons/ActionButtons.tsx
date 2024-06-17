@@ -4,7 +4,7 @@ interface ActionButtonsProps {
 
 function ActionButtons(props: ActionButtonsProps) {
     return (
-        <div className="flex gap-6 px-2 md:px-0 md:gap-28 py-2 bg-dark w-full justify-center rounded-full font-bold border-2"
+        <div className="flex gap-20 px-2 md:px-0 md:gap-28 py-2 bg-dark w-full justify-center rounded-full font-bold border-2"
             style={{borderColor: props.borderColor}}
         >
             <div className="flex gap-2 hover:text-green-400">

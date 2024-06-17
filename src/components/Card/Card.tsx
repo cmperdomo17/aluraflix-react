@@ -15,7 +15,7 @@ function Card(props: CardProps) {
                 src={props.image}
                 alt="Card"
                 style={{borderColor: props.color,
-                    boxShadow: `0 0 2rem ${props.color}`,
+                    boxShadow: `0 0 1.2rem ${props.color}`,
                     width: props.width,
                     height: props.height
                 }}
