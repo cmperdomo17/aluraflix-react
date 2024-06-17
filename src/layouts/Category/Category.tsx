@@ -2,6 +2,7 @@ import Card from "../../components/Card/Card";
 import TitleCategory from "../../components/TitleCategory/TitleCategory";
 
 function Category() {
+
     return (
         <div className="w-full flex flex-col gap-10 pt-8 pb-14 md:pb-24 px-5 md:px-10">
             <TitleCategory title="FRONTEND" bgColor="#409bf1"/>
