@@ -11,8 +11,9 @@ interface CardProps {
 
 function Card({ image, width, height, color, modify, videoUrl }: CardProps) {
 
-    const handleClickVideo = () => {
-        window.location.href = videoUrl;
+    const handleClickVideo = (e: any) => {
+        e.preventDefault();
+        window.open(videoUrl, '_blank');
     }
 
     return (
