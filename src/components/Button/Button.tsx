@@ -5,7 +5,7 @@ interface ButtonProps {
     onClick: () => void;
 }
 
-function Button(props: ButtonProps) {
+function Button({ svg, text, isActive, onClick }: ButtonProps) {
 
     const activeStyle = {
         backgroundColor: "#297ae5",
@@ -20,12 +20,12 @@ function Button(props: ButtonProps) {
     };
 
     return (
-        <button style={props.isActive ? activeStyle : defaultStyles}
-                className={`button-alura ${props.isActive ? "active" : "inactive"} flex justify-center items-center gap-2 text-gray-300 border-gray-300 hover:border-white hover:text-white px-3 md:px-6 py-1 rounded-lg font-semibold text-sm font-Onest`}
-                onClick={props.onClick}
+        <button style={isActive ? activeStyle : defaultStyles}
+                className={`button-alura ${isActive ? "active" : "inactive"} flex justify-center items-center gap-2 text-gray-300 border-gray-300 hover:border-white hover:text-white px-3 md:px-6 py-1 rounded-lg font-semibold text-sm font-Onest`}
+                onClick={onClick}
         >
-            {props.svg}
-            {<span className={`button-text ${props.isActive ? "active" : "inactive"}`}>{props.text}</span>}
+            {svg}
+            {<span className={`button-text ${isActive ? "active" : "inactive"}`}>{text}</span>}
         </button>
     );
 }

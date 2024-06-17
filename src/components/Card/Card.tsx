@@ -8,21 +8,21 @@ interface CardProps {
     modify: boolean;
 }
 
-function Card(props: CardProps) {
+function Card({ image, width, height, color, modify }: CardProps) {
     return (
         <div className="flex flex-col gap-6">
             <img className="card-img cursor-pointer border-4"
-                src={props.image}
+                src={image}
                 alt="Card"
-                style={{borderColor: props.color,
-                    boxShadow: `0 0 1.2rem ${props.color}`,
-                    width: props.width,
-                    height: props.height
+                style={{borderColor: color,
+                    boxShadow: `0 0 1.2rem ${color}`,
+                    width: width,
+                    height: height
                 }}
             />
             <div className="flex justify-center gap-2">
-                {props.modify && (
-                    <ActionButtons borderColor={props.color}/>
+                {modify && (
+                    <ActionButtons borderColor={color}/>
                 )}
             </div>
         </div>
