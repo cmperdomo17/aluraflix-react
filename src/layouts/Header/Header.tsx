@@ -17,10 +17,13 @@ function Header() {
                         </div>
                     </section>
                     <section className="flex justify-center w-full md:w-1/2 mt-10 md:mt-0">
-                        <Card image="/img-card.jpeg"
+                        <Card 
+                            image="/img-card.jpeg"
                             color="#409bf1"
-                            width="500px" height="280px"
+                            width="500px"
+                            height="280px"
                             modify={false}
+                            videoUrl="https://www.youtube.com/watch?v=ov7vA5HFe6w"
                         />
                     </section>
                 </div>
