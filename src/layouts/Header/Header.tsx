@@ -18,6 +18,7 @@ function Header() {
                     </section>
                     <section className="flex justify-center w-full md:w-1/2 mt-10 md:mt-0">
                         <Card 
+                            id={0}
                             image="/img-card.jpeg"
                             color="#409bf1"
                             width="500px"
