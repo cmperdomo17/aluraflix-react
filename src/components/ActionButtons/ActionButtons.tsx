@@ -3,11 +3,12 @@ import Modal from "../Modal/Modal";
 import Form from "../Form/Form";
 import ActionButtonsProps from "../../models/ActionButtonsProps";
 
-function ActionButtons({ borderColor }: ActionButtonsProps) {
+function ActionButtons({ borderColor, cardId }: ActionButtonsProps) {
     const [showModal, setShowModal] = useState(false);
 
-    const toggleModal = () => setShowModal(!showModal);
-
+    const toggleModal = () => {
+        setShowModal(!showModal);
+    }
     return (
         <>
             <div className="flex gap-20 px-6 md:gap-28 py-2 bg-dark w-full justify-center rounded-full font-bold border-2"
@@ -22,16 +23,19 @@ function ActionButtons({ borderColor }: ActionButtonsProps) {
                     <button>Eliminar</button>
                 </div>
             </div>
-            {showModal && <Modal show={showModal}
-            title="Editar Card"
-            children={
-                <div>
-                    <Form />
-                </div>
-            } onClose={toggleModal}
-            bgColor="#192e52"
-            borderColor="#96d2fa"
-            />}
+            {showModal &&
+                <Modal show={showModal}
+                    title="Editar Card"
+                    children={
+                        <div>
+                            <Form cardId={cardId} edit/>
+                        </div>
+                    } 
+                    onClose={toggleModal}
+                    bgColor="#192e52"
+                    borderColor="#96d2fa"
+                />
+            }
         </>
 
     );

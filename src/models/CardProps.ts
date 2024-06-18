@@ -1,4 +1,5 @@
 interface CardProps {
+    id: number;
     image: string;
     width: string;
     height: string;

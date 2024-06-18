@@ -1,16 +1,14 @@
-import { useState, useEffect } from 'react';
 import Card from '../../components/Card/Card';
-import CardData from '../../models/CardData';
 import TitleCategory from '../../components/TitleCategory/TitleCategory';
+import { fetchData } from '../../api/Api';
+import { useState, useEffect } from "react";
+import CardData from '../../models/CardData';
 
 function Category() {
     const [dataCard, setDataCard] = useState<CardData[]>([]);
 
     useEffect(() => {
-        fetch('https://fake-api-aluraflix-theta.vercel.app/card')
-        .then(response => response.json())
-        .then((data: CardData[]) => setDataCard(data))
-        .catch(error => console.log("Error: ", error));
+        fetchData().then(data => setDataCard(data));
     }, []);
 
     const getColorByCategory = (category: string) => {
@@ -29,7 +27,6 @@ function Category() {
     const categories = Array.from(new Set(dataCard.map(card => card.category)));
 
     return (
-        // <div className="w-full flex flex-col gap-10 pt-14 lg:pt-8 pb-14 md:pb-24 px-0 lg:px-14"> 
         <div className='grid grid-cols-1 gap-10 pt-14 lg:pt-8 pb-14 md:pb-24 px-0 lg:px-14'>
             {categories.map(category => {
                 const color = getColorByCategory(category);
@@ -44,6 +41,7 @@ function Category() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10">
                             {categoryCards.map(card => (
                                 <Card
+                                    id={card.id}
                                     key={card.id}
                                     image={card.image}
                                     color={color}
