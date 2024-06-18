@@ -1,6 +1,4 @@
-interface BannerProps {
-    children: React.ReactNode;
-}
+import BannerProps from "../../models/BannerProps";
 
 function Banner({children}: BannerProps) {
     return (

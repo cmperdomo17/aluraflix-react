@@ -1,14 +1,7 @@
 import { useState, useEffect } from 'react';
 import Card from '../../components/Card/Card';
+import CardData from '../../models/CardData';
 import TitleCategory from '../../components/TitleCategory/TitleCategory';
-
-interface CardData {
-    id: number;
-    title: string;
-    category: string;
-    image: string;
-    video: string;
-}
 
 function Category() {
     const [dataCard, setDataCard] = useState<CardData[]>([]);
@@ -36,7 +29,8 @@ function Category() {
     const categories = Array.from(new Set(dataCard.map(card => card.category)));
 
     return (
-        <div className="w-full flex flex-col gap-10 pt-14 lg:pt-8 pb-14 md:pb-24 px-0 lg:px-14">
+        // <div className="w-full flex flex-col gap-10 pt-14 lg:pt-8 pb-14 md:pb-24 px-0 lg:px-14"> 
+        <div className='grid grid-cols-1 gap-10 pt-14 lg:pt-8 pb-14 md:pb-24 px-0 lg:px-14'>
             {categories.map(category => {
                 const color = getColorByCategory(category);
                 const categoryCards = dataCard.filter(card => card.category === category);
@@ -47,7 +41,7 @@ function Category() {
                             title={category.toUpperCase()}
                             bgColor={color}
                         />
-                        <div className="flex flex-col items-center justify-center lg:flex-row gap-10 pt-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10">
                             {categoryCards.map(card => (
                                 <Card
                                     key={card.id}

@@ -1,9 +1,4 @@
-interface ButtonProps {
-    svg: JSX.Element;
-    text: string;
-    isActive: boolean;
-    onClick?: () => void;
-}
+import ButtonProps from "../../models/ButtonProps";
 
 function Button({ svg, text, isActive, onClick }: ButtonProps) {
 

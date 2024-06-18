@@ -1,7 +1,4 @@
-interface CloseButtonProps {
-    color?: string;
-    onClick: () => void;
-}
+import CloseButtonProps from "../../models/CloseButtonProps";
 
 function CloseButton({ onClick, color }: CloseButtonProps) {
     return (

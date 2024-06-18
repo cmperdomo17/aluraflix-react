@@ -1,13 +1,6 @@
 import ActionButtons from "../ActionButtons/ActionButtons";
+import CardProps from "../../models/CardProps";
 
-interface CardProps {
-    image: string;
-    width: string;
-    height: string;
-    color: string;
-    modify: boolean;
-    videoUrl?: string;
-}
 
 function Card({ image, width, height, color, modify, videoUrl }: CardProps) {
 
@@ -16,7 +9,7 @@ function Card({ image, width, height, color, modify, videoUrl }: CardProps) {
     }
 
     return (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 items-center">
             <button onClick={handleClickVideo}>
                 <img className="card-img cursor-pointer border-4"
                     src={image}

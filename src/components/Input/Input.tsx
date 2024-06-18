@@ -1,7 +1,4 @@
-interface InputProps {
-    title: string;
-    textValue?: string;
-}
+import InputProps from "../../models/InputProps";
 
 function Input({title, textValue}: InputProps) {
     return (

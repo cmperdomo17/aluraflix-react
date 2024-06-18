@@ -1,7 +1,4 @@
-interface TitleCategoryProps {
-    title: string;
-    bgColor: string;
-}
+import TitleCategoryProps from "../../models/TitleCategoryProps";
 
 function TitleCategory({ title, bgColor }: TitleCategoryProps) {
     return (

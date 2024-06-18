@@ -1,14 +1,5 @@
-import React from "react";
 import CloseButton from "../CloseButton/CloseButton";
-
-interface ModalProps {
-    title: string;
-    children: React.ReactNode;
-    show: boolean;
-    onClose: () => void;
-    bgColor?: string;
-    borderColor?: string;
-}
+import ModalProps from "../../models/ModalProps";
 
 function Modal({ title, children, show, onClose, bgColor, borderColor }: ModalProps) {
 

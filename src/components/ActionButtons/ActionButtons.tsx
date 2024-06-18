@@ -1,10 +1,7 @@
 import { useState } from "react";
 import Modal from "../Modal/Modal";
 import Form from "../Form/Form";
-
-interface ActionButtonsProps {
-    borderColor: string;
-}
+import ActionButtonsProps from "../../models/ActionButtonsProps";
 
 function ActionButtons({ borderColor }: ActionButtonsProps) {
     const [showModal, setShowModal] = useState(false);
@@ -13,7 +10,7 @@ function ActionButtons({ borderColor }: ActionButtonsProps) {
 
     return (
         <>
-            <div className="flex gap-20 px-2 md:gap-28 py-2 bg-dark w-full justify-center rounded-full font-bold border-2"
+            <div className="flex gap-20 px-6 md:gap-28 py-2 bg-dark w-full justify-center rounded-full font-bold border-2"
                 style={{borderColor: borderColor}}
             >
                 <div className="flex gap-2 hover:text-green-400">
