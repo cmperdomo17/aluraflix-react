@@ -4,8 +4,8 @@ import IconClean from "../Utils/IconClean/IconClean";
 import Input from "../Input/Input";
 import { useState, useEffect } from "react";
 import CardData from "../../models/CardData";
-import { fetchData } from "../../api/Api";
 import FormProps from "../../models/FormProps";
+import axios from "axios";
 
 function Form({ edit, cardId }: FormProps) {
     const [activeButton, setActiveButton] = useState("");
@@ -13,7 +13,13 @@ function Form({ edit, cardId }: FormProps) {
     const [dataCard, setDataCard] = useState<CardData[]>([]);
 
     useEffect(() => {
-        fetchData().then(data => setDataCard(data));
+        axios.get('https://fake-api-aluraflix-theta.vercel.app/card')
+            .then(response => {
+                setDataCard(response.data);
+            })
+            .catch(error => {
+                console.log("Error: ", error);
+            });
     }, []);
 
     return (

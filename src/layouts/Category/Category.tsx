@@ -1,6 +1,6 @@
+import axios from 'axios';
 import Card from '../../components/Card/Card';
 import TitleCategory from '../../components/TitleCategory/TitleCategory';
-import { fetchData } from '../../api/Api';
 import { useState, useEffect } from "react";
 import CardData from '../../models/CardData';
 
@@ -8,7 +8,13 @@ function Category() {
     const [dataCard, setDataCard] = useState<CardData[]>([]);
 
     useEffect(() => {
-        fetchData().then(data => setDataCard(data));
+        axios.get('https://fake-api-aluraflix-theta.vercel.app/card')
+            .then(response => {
+                setDataCard(response.data);
+            })
+            .catch(error => {
+                console.log("Error: ", error);
+            });
     }, []);
 
     const getColorByCategory = (category: string) => {
