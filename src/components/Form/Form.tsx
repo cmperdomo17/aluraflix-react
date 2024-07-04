@@ -14,14 +14,10 @@ function Form({ edit, cardId }: FormProps) {
     const [activeButton, setActiveButton] = useState("");
     const activateButton = (buttonName: string) => setActiveButton(buttonName);
 
-    const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm();
+    // const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm();
+    const { handleSubmit, reset } = useForm();
     const [dataCard, setDataCard] = useState([]);
     const [cardEdit, setCardEdit] = useState<CardData | null>(null);
-    const [title, setTitle] = useState("");
-    const [category, setCategory] = useState("");
-    const [image, setImage] = useState("");
-    const [video, setVideo] = useState("");
-    const [description, setDescription] = useState("");
 
     useEffect(() => {
         getCards().then(data => setDataCard(data));
@@ -75,6 +71,23 @@ function Form({ edit, cardId }: FormProps) {
             {edit ? (
                 dataCard.filter((card: CardData) => card.id === cardId).map((card: CardData) => (
                 <div key={card.id}>
+                    <Input title="Titulo" textValue={card.title} />
+                    <Input title="Categoria" textValue={card.category} />
+                    <Input title="Imagen" textValue={card.image} />
+                    <Input title="Video" textValue={card.video}  />
+                    <Input title="Descripción" textValue={card.description} />
+                </div>
+                ))
+            ) : (
+                <>
+                    <Input title="Titulo"  />
+                    <Input title="Categoria"  />
+                    <Input title="Imagen"  />
+                    <Input title="Video" />
+                    <Input title="Descripción" />
+                </>
+            )}
+                    {/* <div key={card.id}>
                     <Input title="Titulo" textValue={card.title} setTextValue={setTitle} />
                     <Input title="Categoria" textValue={card.category} setTextValue={setCategory} />
                     <Input title="Imagen" textValue={card.image} setTextValue={setImage} />
@@ -90,7 +103,7 @@ function Form({ edit, cardId }: FormProps) {
                     <Input title="Video" setTextValue={setVideo} />
                     <Input title="Descripción" setTextValue={setDescription} />
                 </>
-            )}
+            )} */}
             </div>
 
             <div className="flex justify-center gap-10"> 
