@@ -6,7 +6,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import CardData from "../../models/CardData";
 import FormProps from "../../models/FormProps";
-import { getCards, postCard, putCard, deleteCard } from "../../api/api";
+import { getCards, postCard, putCard } from "../../api/api";
 import { v4 as uuidv4 } from "uuid";
 import FormData from "../../models/FormData";
 
@@ -55,28 +55,19 @@ function Form({ edit, cardId }: FormProps) {
         }
     };
 
-    const handleEditCard = (card: CardData) => {
-        setCardEdit(card);
-        setValue("title", card.title);
-        setValue("category", card.category);
-        setValue("image", card.image);
-        setValue("video", card.video);
-        setValue("description", card.description);
-    };
+    // const handleEditCard = (card: CardData) => {
+    //     setCardEdit(card);
+    //     setValue("title", card.title);
+    //     setValue("category", card.category);
+    //     setValue("image", card.image);
+    //     setValue("video", card.video);
+    //     setValue("description", card.description);
+    // };
 
-    const handleDeleteCard = async (id: string) => {
-        try {
-            await deleteCard(id);
-            getDataCards();
-        } catch (error) {
-            console.error("Error deleting card", error);
-        }
-    };
-
-    const handleCancelEdit = () => {
-        setCardEdit(null);
-        reset();
-    };
+    // const handleCancelEdit = () => {
+    //     setCardEdit(null);
+    //     reset();
+    // };
 
     return (
         <form className="flex flex-col gap-16" onSubmit={handleSubmit(onSubmit)}>
