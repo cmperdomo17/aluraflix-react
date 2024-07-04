@@ -9,9 +9,12 @@ function ActionButtons({ borderColor, cardId, onDelete }: ActionButtonsProps) {
 
     const handleDeleteCard = async () => {
         try {
-            if (window.confirm("¿Estás seguro de eliminar esta tarjeta?"))
-            await deleteCard(cardId);
-            onDelete?.(cardId);
+            if (window.confirm("¿Are you sure you want to delete this card?")) {
+                await deleteCard(cardId);
+                onDelete?.(cardId);
+            } else {
+                return;
+            }
         } catch (error) {
             console.error("Error deleting card", error);
         }
