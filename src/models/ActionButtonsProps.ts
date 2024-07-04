@@ -1,6 +1,7 @@
 interface ActionButtonsProps {
     borderColor: string;
-    cardId: number;
+    cardId: string;
+    onDelete?: (id: string) => void;
 }
 
 export default ActionButtonsProps;

@@ -11,7 +11,12 @@ function NavBar() {
     const [showModal, setShowModal] = useState(false);
 
     const activateButton = (buttonName: string) => setActiveButton(buttonName);
-    const toggleModalVisibility = () => setShowModal(!showModal);
+    const toggleModalVisibility = () => {
+        if (showModal) {
+            setActiveButton("Home");
+        }
+        setShowModal(!showModal);
+    };
     
     const handleButtonClickAndToggleModal = (buttonName: string) => {
         setActiveButton(buttonName);
@@ -41,15 +46,16 @@ function NavBar() {
                     />
                 </div>
             </nav>
-            {showModal && <Modal show={showModal}
-            title="Nuevo Video"
-            children={
-                <div>
-                    <Form />
-                </div>
-            } onClose={toggleModalVisibility}
-            bgColor="#232323"
-            borderColor="#fbf8f3"
+            {showModal && <Modal 
+                show={showModal}
+                title="Nuevo Video"
+                children={
+                    <div>
+                        <Form />
+                    </div>
+                } onClose={toggleModalVisibility}
+                bgColor="#232323"
+                borderColor="#fbf8f3"
             />}
         </>
         

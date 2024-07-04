@@ -1,6 +1,6 @@
 interface FormProps {
     edit?: boolean;
-    cardId?: number;
+    cardId?: string;
 }
 
 export default FormProps;

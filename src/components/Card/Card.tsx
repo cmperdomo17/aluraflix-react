@@ -2,7 +2,7 @@ import ActionButtons from "../ActionButtons/ActionButtons";
 import CardProps from "../../models/CardProps";
 
 
-function Card({ id, image, width, height, color, modify, videoUrl }: CardProps) {
+function Card({ id, image, width, height, color, modify, videoUrl, onDelete }: CardProps) {
 
     const handleClickVideo = () => {
         window.open(videoUrl, '_blank');
@@ -23,7 +23,7 @@ function Card({ id, image, width, height, color, modify, videoUrl }: CardProps) 
             </button>
             <div className="flex justify-center gap-2">
                 {modify && (
-                    <ActionButtons borderColor={color} cardId={id} />
+                    <ActionButtons borderColor={color} cardId={id} onDelete={onDelete} />
                 )}
             </div>
         </div>

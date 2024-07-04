@@ -1,21 +1,19 @@
-import axios from 'axios';
 import Card from '../../components/Card/Card';
 import TitleCategory from '../../components/TitleCategory/TitleCategory';
 import { useState, useEffect } from "react";
 import CardData from '../../models/CardData';
+import { getCards } from '../../api/api';
 
 function Category() {
     const [dataCard, setDataCard] = useState<CardData[]>([]);
 
     useEffect(() => {
-        axios.get('https://fake-api-aluraflix-theta.vercel.app/card')
-            .then(response => {
-                setDataCard(response.data);
-            })
-            .catch(error => {
-                console.log("Error: ", error);
-            });
+        getCards().then(data => setDataCard(data));
     }, []);
+
+    const handleCardDelete = (deletedCardId: string) => {
+        setDataCard(dataCard.filter(card => card.id !== deletedCardId));
+    };
 
     const getColorByCategory = (category: string) => {
         switch(category.toUpperCase()) {
@@ -55,6 +53,7 @@ function Category() {
                                     height="218px"
                                     modify={true}
                                     videoUrl={card.video}
+                                    onDelete={handleCardDelete}
                                 />
                             ))}
                         </div>
