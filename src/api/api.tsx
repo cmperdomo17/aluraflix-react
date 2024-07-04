@@ -2,8 +2,8 @@ import axios from "axios";
 import CardData from "../models/CardData";
 
 export const api = axios.create({
-    // baseURL: "https://fake-api-aluraflix-theta.vercel.app"
-    baseURL: "http://localhost:3000"
+    baseURL: "https://fake-api-aluraflix-theta.vercel.app"
+    // baseURL: "http://localhost:3000"
 });
 
 // Get cards
