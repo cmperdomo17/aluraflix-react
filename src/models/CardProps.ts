@@ -1,3 +1,5 @@
+import CardData from "./CardData";
+
 interface CardProps {
     id: string;
     image: string;
@@ -7,6 +9,7 @@ interface CardProps {
     modify: boolean;
     videoUrl?: string;
     onDelete?: (id: string) => void;
+    onEdit?: (card: CardData) => void;
 }
 
 export default CardProps;

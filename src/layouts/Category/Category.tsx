@@ -15,6 +15,11 @@ function Category() {
         setDataCard(dataCard.filter(card => card.id !== deletedCardId));
     };
 
+    const handleCardEdit = (editedCard: CardData) => {
+        const updatedData = dataCard.map(card => card.id === editedCard.id ? editedCard : card);
+        setDataCard(updatedData);
+    };
+
     const getColorByCategory = (category: string) => {
         switch(category.toUpperCase()) {
             case 'FRONTEND':
@@ -54,6 +59,7 @@ function Category() {
                                     modify={true}
                                     videoUrl={card.video}
                                     onDelete={handleCardDelete}
+                                    onEdit={handleCardEdit}
                                 />
                             ))}
                         </div>

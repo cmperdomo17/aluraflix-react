@@ -9,7 +9,7 @@ function ActionButtons({ borderColor, cardId, onDelete }: ActionButtonsProps) {
 
     const handleDeleteCard = async () => {
         try {
-            if (window.confirm("¿Are you sure you want to delete this card?")) {
+            if (window.confirm("¿Estás seguro de que deseas eliminar esta card?")) {
                 await deleteCard(cardId);
                 onDelete?.(cardId);
             } else {
@@ -17,6 +17,7 @@ function ActionButtons({ borderColor, cardId, onDelete }: ActionButtonsProps) {
             }
         } catch (error) {
             console.error("Error deleting card", error);
+            alert("Error al eliminar la card");
         }
     };
 
@@ -42,7 +43,9 @@ function ActionButtons({ borderColor, cardId, onDelete }: ActionButtonsProps) {
                     title="Editar Card"
                     children={
                         <div>
-                            <Form cardId={cardId} edit/>
+                            <Form cardId={cardId}
+                                edit
+                            />
                         </div>
                     } 
                     onClose={toggleModal}

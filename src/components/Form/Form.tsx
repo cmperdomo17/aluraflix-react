@@ -8,19 +8,29 @@ import CardData from "../../models/CardData";
 import FormProps from "../../models/FormProps";
 import { getCards, postCard, putCard } from "../../api/api";
 import { v4 as uuidv4 } from "uuid";
-import FormData from "../../models/FormData";
 
-function Form({ edit, cardId }: FormProps) {    
+function Form({ edit, cardId }: FormProps) {
     const [activeButton, setActiveButton] = useState("");
     const activateButton = (buttonName: string) => setActiveButton(buttonName);
-
-    // const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm();
-    const { handleSubmit, reset } = useForm();
     const [dataCard, setDataCard] = useState([]);
-    const [cardEdit, setCardEdit] = useState<CardData | null>(null);
+
+    const { register, handleSubmit, reset, setValue } = useForm();
 
     useEffect(() => {
-        getCards().then(data => setDataCard(data));
+        if (edit && cardId) {
+            const card = dataCard.find((card: CardData) => card.id === cardId);
+            if (card) {
+                Object.keys(card).forEach((key) => {
+                    setValue(key, card[key]);
+                });
+            }
+        } else {
+            cleanInputs();
+        }
+    }, [edit, cardId, dataCard, setValue]);
+
+    useEffect(() => {
+        getCards().then((data) => setDataCard(data));
     }, []);
 
     const getDataCards = async () => {
@@ -28,87 +38,88 @@ function Form({ edit, cardId }: FormProps) {
             const dataCard = await getCards();
             setDataCard(dataCard);
         } catch (error) {
-            console.error("Error fetching data", error);
+        console.error("Error fetching data", error);
         }
     };
 
     const onSubmit: SubmitHandler<FieldValues> = async (data: FieldValues) => {
-        const id = uuidv4();
-        const newData = { id, ...data } as FormData;
-
         try {
-            if (cardEdit) {
-                await putCard(cardEdit.id, newData);
-                setCardEdit(null);
-                reset();
+            if (edit && cardId) {
+                const updatedData = {
+                    id: cardId,
+                    title: data.title,
+                    category: data.category.toUpperCase(),
+                    image: data.image,
+                    video: data.video,
+                    description: data.description,
+                };
+                await putCard(cardId, updatedData);
+                alert("Card creada exitosamente");
+                window.location.reload();
             } else {
+                const newData = {
+                    id: uuidv4(),
+                    title: data.title,
+                    category: data.category.toUpperCase(),
+                    image: data.image,
+                    video: data.video,
+                    description: data.description,
+                };
                 await postCard(newData);
-                reset();
+                alert("Card editada exitosamente");
+                window.location.reload();
             }
-            getDataCards();
+        reset();
+        getDataCards();
         } catch (error) {
             console.error("Error submitting data", error);
+            alert("Error en la creación de la card");
         }
     };
 
-    // const handleEditCard = (card: CardData) => {
-    //     setCardEdit(card);
-    //     setValue("title", card.title);
-    //     setValue("category", card.category);
-    //     setValue("image", card.image);
-    //     setValue("video", card.video);
-    //     setValue("description", card.description);
-    // };
-
-    // const handleCancelEdit = () => {
-    //     setCardEdit(null);
-    //     reset();
-    // };
+    const cleanInputs = () => {
+        const emptyValues = {
+            title: '',
+            category: '',
+            image: '',
+            video: '',
+            description: ''
+        };
+        Object.keys(emptyValues).forEach((key) => {
+            setValue(key, '');
+        });
+        reset(emptyValues);
+        activateButton("Clean");
+    };
 
     return (
         <form className="flex flex-col gap-16" onSubmit={handleSubmit(onSubmit)}>
+
             <div className="flex flex-col">
-            {edit ? (
-                dataCard.filter((card: CardData) => card.id === cardId).map((card: CardData) => (
-                <div key={card.id}>
-                    <Input title="Titulo" textValue={card.title} />
-                    <Input title="Categoria" textValue={card.category} />
-                    <Input title="Imagen" textValue={card.image} />
-                    <Input title="Video" textValue={card.video}  />
-                    <Input title="Descripción" textValue={card.description} />
-                </div>
-                ))
-            ) : (
-                <>
-                    <Input title="Titulo"  />
-                    <Input title="Categoria"  />
-                    <Input title="Imagen"  />
-                    <Input title="Video" />
-                    <Input title="Descripción" />
-                </>
-            )}
-                    {/* <div key={card.id}>
-                    <Input title="Titulo" textValue={card.title} setTextValue={setTitle} />
-                    <Input title="Categoria" textValue={card.category} setTextValue={setCategory} />
-                    <Input title="Imagen" textValue={card.image} setTextValue={setImage} />
-                    <Input title="Video" textValue={card.video} setTextValue={setVideo} />
-                    <Input title="Descripción" textValue={card.description} setTextValue={setDescription} />
-                </div>
-                ))
-            ) : (
-                <>
-                    <Input title="Titulo" setTextValue={setTitle} />
-                    <Input title="Categoria" setTextValue={setCategory} />
-                    <Input title="Imagen" setTextValue={setImage} />
-                    <Input title="Video" setTextValue={setVideo} />
-                    <Input title="Descripción" setTextValue={setDescription} />
-                </>
-            )} */}
+                <Input title="Titulo" {...register("title")} />
+                <Input title="Categoria" {...register("category")} />
+                <Input title="Imagen" {...register("image")} />
+                <Input title="Video" {...register("video")} />
+                <Input title="Descripción" {...register("description")} />
             </div>
 
-            <div className="flex justify-center gap-10"> 
-                <Button svg={<IconSave />} text="Guardar" isActive={activeButton === "Save"} onClick={() => activateButton("Save")} />
-                <Button svg={<IconClean />} text="Limpiar" isActive={activeButton === "Clean"} onClick={() => activateButton("Clean")} />
+            <div className="flex justify-center gap-10">
+                <Button
+                    svg={<IconSave />}
+                    text="Guardar"
+                    isActive={activeButton === "Save"}
+                    onClick={handleSubmit(onSubmit)}
+                    type="submit"
+                />
+                <Button
+                    svg={<IconClean />}
+                    text="Limpiar"
+                    isActive={activeButton === "Clean"}
+                    onClick={() => {
+                        cleanInputs();
+                    }}
+                    type="button"
+                />
             </div>
         </form>
     );

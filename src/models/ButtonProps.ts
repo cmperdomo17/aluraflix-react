@@ -3,6 +3,7 @@ interface ButtonProps {
     text: string;
     isActive: boolean;
     onClick?: () => void;
+    type?: "button" | "submit";
 }
 
 export default ButtonProps;
