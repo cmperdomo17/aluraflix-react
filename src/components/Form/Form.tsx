@@ -78,19 +78,9 @@ function Form({ edit, cardId }: FormProps) {
     };
 
     const cleanInputs = () => {
-        const emptyValues = {
-            title: '',
-            category: '',
-            image: '',
-            video: '',
-            description: ''
-        };
-        Object.keys(emptyValues).forEach((key) => {
-            setValue(key, '');
-        });
-        reset(emptyValues);
+        reset();
         activateButton("Clean");
-    };
+    };    
 
     return (
         <form className="flex flex-col gap-16" onSubmit={handleSubmit(onSubmit)}>
