@@ -5,15 +5,16 @@ import Input from "../Input/Input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import CardData from "../../models/CardData";
+import CategoryData from "../../models/CategoryData";
 import FormProps from "../../models/FormProps";
-import { getCards, postCard, putCard } from "../../api/api";
+import { getCards, postCard, putCard, getCategories } from "../../api/api";
 import { v4 as uuidv4 } from "uuid";
 
 function Form({ edit, cardId }: FormProps) {
     const [activeButton, setActiveButton] = useState("");
     const activateButton = (buttonName: string) => setActiveButton(buttonName);
     const [dataCard, setDataCard] = useState([]);
-
+    const [categories, setCategories] = useState<CategoryData[]>([]);
     const { register, handleSubmit, reset, setValue } = useForm();
 
     useEffect(() => {
@@ -31,6 +32,7 @@ function Form({ edit, cardId }: FormProps) {
 
     useEffect(() => {
         getCards().then((data) => setDataCard(data));
+        getCategories().then((data) => setCategories(data));
     }, []);
 
     const getDataCards = async () => {
@@ -48,25 +50,23 @@ function Form({ edit, cardId }: FormProps) {
                 const updatedData = {
                     id: cardId,
                     title: data.title,
-                    category: data.category.toUpperCase(),
+                    category: data.category,
                     image: data.image,
                     video: data.video,
                     description: data.description,
                 };
                 await putCard(cardId, updatedData);
-                alert("Card creada exitosamente");
                 window.location.reload();
             } else {
                 const newData = {
                     id: uuidv4(),
                     title: data.title,
-                    category: data.category.toUpperCase(),
+                    category: data.category,
                     image: data.image,
                     video: data.video,
                     description: data.description,
                 };
                 await postCard(newData);
-                alert("Card editada exitosamente");
                 window.location.reload();
             }
         reset();
@@ -78,19 +78,31 @@ function Form({ edit, cardId }: FormProps) {
     };
 
     const cleanInputs = () => {
+        if (cardId) {
+            activateButton("Clean");
+        }
         reset();
-        activateButton("Clean");
     };    
 
     return (
         <form className="flex flex-col gap-16" onSubmit={handleSubmit(onSubmit)}>
 
             <div className="flex flex-col">
-                <Input title="Titulo" {...register("title")} />
-                <Input title="Categoria" {...register("category")} />
-                <Input title="Imagen" {...register("image")} />
-                <Input title="Video" {...register("video")} />
-                <Input title="Descripción" {...register("description")} />
+                <Input title="Titulo" {...register("title")} placeholder="Ingrese el título" />
+
+                <label className="font-bold py-3">Categoría</label>
+
+                <select {...register("category")} className="bg-white rounded-full px-2 text-dark font-semibold w-80 lg:w-96" required>
+                    {categories.map((category) => (
+                        <option key={category.id} value={category.name}>
+                            {category.name}
+                        </option>
+                    ))}
+                </select>
+
+                <Input title="Imagen" {...register("image")} placeholder="Ingrese la URL de la imagen" />
+                <Input title="Video" {...register("video")} placeholder="Ingrese la URL del video" />
+                <Input title="Descripción" {...register("description")} placeholder="Ingrese la descripción" />
             </div>
 
             <div className="flex justify-center gap-10">

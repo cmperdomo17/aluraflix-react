@@ -16,6 +16,16 @@ export const getCards = async() => {
     }
 };
 
+// Get categories
+export const getCategories = async() => {
+    try {
+        const response = await api.get("/category");
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching categories", error);
+    }
+};
+
 // Post card
 export const postCard = async(data: CardData) => {
     try {
