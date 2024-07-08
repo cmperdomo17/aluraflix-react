@@ -33,7 +33,7 @@ function ActionButtons({ borderColor, cardId, onDelete }: ActionButtonsProps) {
 
     return (
         <>
-            <div className="flex gap-14 px-14 py-2 bg-dark w-full justify-center rounded-full font-bold border-2"
+            <div className="flex gap-14 px-14 md:gap-10 md:px-10 lg:gap-14 lg:px-8 py-2 bg-dark w-full justify-center rounded-full font-bold border-2"
                 style={{borderColor: borderColor}}
             >
                 <a className="flex gap-2 hover:text-green-400 cursor-pointer" onClick={toggleModal}>
