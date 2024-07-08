@@ -66,7 +66,7 @@ function ActionButtons({ borderColor, cardId, onDelete }: ActionButtonsProps) {
                 <Modal show={showModalDelete}
                     title="Eliminar Card"
                     children={
-                        <div className="flex flex-col gap-10 py-5 text-lg">
+                        <div className="flex flex-col gap-10 py-5 text-lg text-center font-Onest">
                             <p>¿Estás seguro de que deseas eliminar esta card?</p>
                             <div className="flex gap-10 justify-center font-semibold">
                                 <button
