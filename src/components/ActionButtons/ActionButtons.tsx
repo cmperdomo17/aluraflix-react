@@ -5,14 +5,16 @@ import ActionButtonsProps from "../../models/ActionButtonsProps";
 import { deleteCard } from "../../api/api";
 
 function ActionButtons({ borderColor, cardId, onDelete }: ActionButtonsProps) {
-    const [showModal, setShowModal] = useState(false);
+    const [showModalEdit, setShowModalEdit] = useState(false);
+    const [showModalDelete, setShowModalDelete] = useState(false);
 
     const handleDeleteCard = async () => {
         try {
-            if (window.confirm("¿Estás seguro de que deseas eliminar esta card?")) {
+            if (cardId) {
                 await deleteCard(cardId);
                 onDelete?.(cardId);
-            } else {
+            }
+            else {
                 return;
             }
         } catch (error) {
@@ -22,8 +24,13 @@ function ActionButtons({ borderColor, cardId, onDelete }: ActionButtonsProps) {
     };
 
     const toggleModal = () => {
-        setShowModal(!showModal);
+        setShowModalEdit(!showModalEdit);
     }
+
+    const toggleModalDelete = () => {
+        setShowModalDelete(!showModalDelete);
+    }
+
     return (
         <>
             <div className="flex gap-14 px-14 py-2 bg-dark w-full justify-center rounded-full font-bold border-2"
@@ -35,11 +42,12 @@ function ActionButtons({ borderColor, cardId, onDelete }: ActionButtonsProps) {
                 </div>
                 <div className="flex gap-2 hover:text-red-400">
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-trash"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>
-                    <button onClick={handleDeleteCard}>Eliminar</button>
+                    <button onClick={toggleModalDelete}>Eliminar</button>
                 </div>
             </div>
-            {showModal &&
-                <Modal show={showModal}
+
+            {showModalEdit &&
+                <Modal show={showModalEdit}
                     title="Editar Card"
                     children={
                         <div>
@@ -50,6 +58,32 @@ function ActionButtons({ borderColor, cardId, onDelete }: ActionButtonsProps) {
                     } 
                     onClose={toggleModal}
                     bgColor="#192e52"
+                    borderColor="#96d2fa"
+                />
+            }
+
+            {showModalDelete &&
+                <Modal show={showModalDelete}
+                    title="Eliminar Card"
+                    children={
+                        <div className="flex flex-col gap-10 py-5 text-lg">
+                            <p>¿Estás seguro de que deseas eliminar esta card?</p>
+                            <div className="flex gap-10 justify-center font-semibold">
+                                <button
+                                    className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+                                    onClick={handleDeleteCard}>
+                                        Eliminar
+                                </button>
+                                <button
+                                    className="bg-white text-zinc-900 px-4 py-2 rounded-lg hover:bg-gray-300"
+                                    onClick={toggleModalDelete}>
+                                        Cancelar
+                                </button>
+                            </div>
+                        </div>
+                    } 
+                    onClose={toggleModalDelete}
+                    bgColor="#920a0a"
                     borderColor="#96d2fa"
                 />
             }
