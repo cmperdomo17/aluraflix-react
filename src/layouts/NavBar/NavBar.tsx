@@ -30,7 +30,7 @@ function NavBar() {
                     <Logo />
                 </div>
 
-                <div className="flex justify-end gap-10 buttons-svg-mobile">
+                <div className="flex justify-end gap-5 buttons-svg-mobile">
                     <Button
                         svg= {<IconHome />}
                         text="Home"
