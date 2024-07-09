@@ -36,7 +36,7 @@ function Category() {
     const categories = Array.from(new Set(dataCard.map(card => card.category)));
 
     return (
-        <div className='grid grid-cols-1 gap-10 pt-14 lg:pt-8 pb-14 md:pb-24 px-0 lg:px-14'>
+        <div className='grid grid-cols-1 gap-10 pt-10 pb-10 md:pb-16 px-0 lg:px-14'>
             {categories.map(category => {
                 const color = getColorByCategory(category);
                 const categoryCards = dataCard.filter(card => card.category === category);
@@ -47,7 +47,7 @@ function Category() {
                             title={category.toUpperCase()}
                             bgColor={color}
                         />
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10 px-5 md:px-0">
                             {categoryCards.map(card => (
                                 <Card
                                     id={card.id}
