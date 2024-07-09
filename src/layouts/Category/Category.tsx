@@ -36,7 +36,7 @@ function Category() {
     const categories = Array.from(new Set(dataCard.map(card => card.category)));
 
     return (
-        <div className='grid grid-cols-1 gap-10 pt-10 pb-10 md:pb-16 px-0 lg:px-14 container'>
+        <div className='grid grid-cols-1 gap-10 pt-10 pb-10 md:pb-16 px-0 lg:px-14'>
             {categories.map(category => {
                 const color = getColorByCategory(category);
                 const categoryCards = dataCard.filter(card => card.category === category);
