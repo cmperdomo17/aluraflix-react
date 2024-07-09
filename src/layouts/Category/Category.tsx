@@ -44,7 +44,9 @@ function Category() {
     return (
         <div className='grid grid-cols-1 gap-10 pt-10 pb-10 md:pb-16 px-0 lg:px-14'>
             {loading ? (
-                <Loading />
+                <div className='flex justify-center items-center h-screen'>
+                    <Loading />
+                </div>
             ) : (
                 categories.map(category => {
                     const color = getColorByCategory(category);
